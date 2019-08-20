@@ -1,0 +1,14 @@
+.line-1px(@color: #c7c7c7) {
+  position: relative;
+  &::after {
+    content: '';
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 200%;
+    border-bottom: 1px solid #c7c7c7;
+    height: calc(200% - 2px);
+    transform-origin: left top;
+    transform: scale(0.5)
+  }
+}

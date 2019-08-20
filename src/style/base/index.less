@@ -1,0 +1,121 @@
+@import '../reset.css';
+@import './var.less';
+
+@import '../mixins/ellipsis';
+@import '../mixins/clearfix';
+@import '../mixins/hairline';
+
+@import '../mixins/size.less';
+@import '../mixins/bg-image.less';
+@import '../mixins/line-1px.less';
+
+.ellipsis {
+  .ellipsis();
+}
+
+.multi-ellipsis--2 {
+  .multi-ellipsis(2)
+}
+.multi-ellipsis--3 {
+  .multi-ellipsis(3)
+}
+.multi-ellipsis--4 {
+  .multi-ellipsis(4)
+}
+.multi-ellipsis--5 {
+  .multi-ellipsis(5)
+}
+
+.clearfix {
+  .clearfix();
+}
+
+[class*='hairline'] {
+  position: relative;
+
+  &::after {
+    .hairline();
+  }
+}
+
+.hairline {
+  &--top::after {
+    border-top-width: 1px;
+  }
+
+  &--left::after {
+    border-left-width: 1px;
+  }
+
+  &--right::after {
+    border-right-width: 1px;
+  }
+
+  &--bottom::after {
+    border-bottom-width: 1px;
+  }
+
+  &--top-bottom::after {
+    border-width: 1px 0;
+  }
+
+  &--surround::after {
+    border-width: 1px;
+  }
+}
+
+.extend-click() {
+  position: relative;
+
+  &:before {
+    content: '';
+    position: absolute;
+    top: -10px;
+    left: -10px;
+    right: -10px;
+    bottom: -10px;
+  }
+}
+
+.fixed() {
+  position: fixed;
+  _position: absolute;
+  *zoom: 1;
+}
+// 吸顶导航
+.fix-header(@h: 50px) {
+  .fixed();
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: @h;
+  z-index: 1000;
+}
+
+// 吸底导航
+.fix-header(@h: 50px) {
+  .fixed();
+  left: 0;
+  bottom: 0;
+  width: 100%;
+  height: @h;
+  z-index: 1000;
+}
+
+// 盒子阴影
+// box-shadow: 水平阴影的位置, 垂直阴影的位置, 模糊距离, 阴影的大小, 阴影的颜色, 阴影开始方向（默认是从里往外，设置inset就是从外往里）;
+// box-shadow: h-shadow v-shadow blur spread color inset;
+.box-shadow() {
+  box-shadow: 0px 14px 26px 0px rgba(0, 0, 0, 0.1);
+}
+
+// 盒子 Hover
+.box-hover() {
+  // box-shadow: 0px 1px 2px 0px rgba(84, 107, 107, .4);
+  transition: all .2s linear;
+
+  &:hover {
+    box-shadow: 0 15px 30px rgba(0, 0, 0, .1);
+    transform: translate3d(0, -2px, 0);
+  }
+}
